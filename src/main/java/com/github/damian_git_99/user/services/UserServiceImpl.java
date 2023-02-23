@@ -2,6 +2,7 @@ package com.github.damian_git_99.user.services;
 
 import com.github.damian_git_99.user.exceptions.EmailAlreadyTakenException;
 import com.github.damian_git_99.user.exceptions.UserNotFoundException;
+import com.github.damian_git_99.user.model.Task;
 import com.github.damian_git_99.user.model.User;
 import com.github.damian_git_99.user.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,11 @@ public class UserServiceImpl implements UserService {
         if (userOptional.isEmpty()) throw new UserNotFoundException("User Not Found");
 
         return userRepository.updateUser(user);
+    }
+
+    @Override
+    public void createTask(Task task) {
+        userRepository.createTask(task);
     }
 
 }

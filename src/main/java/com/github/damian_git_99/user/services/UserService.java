@@ -1,5 +1,6 @@
 package com.github.damian_git_99.user.services;
 
+import com.github.damian_git_99.user.model.Task;
 import com.github.damian_git_99.user.model.User;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface UserService {
     void deleteUserById(Long id);
 
     boolean updateUser(User user);
+
+    void createTask(Task task);
 }

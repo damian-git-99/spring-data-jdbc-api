@@ -1,5 +1,6 @@
 package com.github.damian_git_99.user.repositories;
 
+import com.github.damian_git_99.user.model.Task;
 import com.github.damian_git_99.user.model.User;
 
 import java.util.List;
@@ -18,5 +19,7 @@ public interface UserRepository {
     Optional<User> findUserByEmail(String email);
 
     boolean updateUser(User user);
+
+    boolean createTask(Task task);
 
 }

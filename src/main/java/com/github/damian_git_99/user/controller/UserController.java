@@ -1,6 +1,7 @@
 package com.github.damian_git_99.user.controller;
 
 import com.github.damian_git_99.user.exceptions.UserNotFoundException;
+import com.github.damian_git_99.user.model.Task;
 import com.github.damian_git_99.user.model.User;
 import com.github.damian_git_99.user.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,29 +24,35 @@ public class UserController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    void createUser(@RequestBody User user){
+    void createUser(@RequestBody User user) {
         userService.createUser(user);
     }
 
     @GetMapping("")
-    List<User> findAllUsers(){
+    List<User> findAllUsers() {
         return userService.findAllUsers();
     }
 
     @GetMapping("/{id}")
-    User findUser(@PathVariable(name = "id") Long id){
+    User findUser(@PathVariable(name = "id") Long id) {
         return userService.findUserById(id)
-                .orElseThrow( () -> new UserNotFoundException("User Not Found"));
+                .orElseThrow(() -> new UserNotFoundException("User Not Found"));
     }
 
     @DeleteMapping("/{id}")
-    void deleteUserById(@PathVariable(name = "id") Long id){
+    void deleteUserById(@PathVariable(name = "id") Long id) {
         userService.deleteUserById(id);
     }
 
     @PutMapping("")
-    void updateUser(@RequestBody User user){
+    void updateUser(@RequestBody User user) {
         userService.updateUser(user);
+    }
+
+    @PostMapping("/tasks")
+    @ResponseStatus(HttpStatus.CREATED)
+    void createTask(@RequestBody Task task) {
+        userService.createTask(task);
     }
 
 }

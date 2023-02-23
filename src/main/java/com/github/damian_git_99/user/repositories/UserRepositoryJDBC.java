@@ -1,6 +1,7 @@
 package com.github.damian_git_99.user.repositories;
 
 
+import com.github.damian_git_99.user.model.Task;
 import com.github.damian_git_99.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
@@ -66,6 +67,13 @@ public class UserRepositoryJDBC implements UserRepository {
     public boolean updateUser(User user) {
         String query = "UPDATE users SET username=?, email=?, phone=? WHERE users.id = ?";
         int result = jdbc.update(query, user.getUsername(), user.getEmail(), user.getPhone(), user.getId());
+        return result == 1;
+    }
+
+    @Override
+    public boolean createTask(Task task) {
+        String query = "INSERT INTO tasks (name, description, user_id) VALUES (?,?,?)";
+        int result = jdbc.update(query, task.getName(), task.getDescription(), task.getUserId());
         return result == 1;
     }
 
