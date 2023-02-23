@@ -40,16 +40,6 @@ Run application
   mvn spring-boot:run
 ```
 
-    
-## Running Tests
-
-To run tests, run the following command
-
-```bash
-  mvn test
-```
-
-
 ## API Reference
 
 
