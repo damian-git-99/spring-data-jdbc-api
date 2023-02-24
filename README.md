@@ -36,13 +36,15 @@ App Runs on port 8080
 
 ## API Reference
 
-| Methods | Urls     | Actions                |
-| :-------- | :------- | :------------------------- |
-| `POST` | `/api/v1/users` | `create new user` |
-| `GET` | `/api/v1/users` | `retrieve all users` |
-| `GET` | `/api/v1/users/{id}` | `retrieve a user by id` |
-| `DELETE` | `/api/v1/users/{id}` | `delete a user by id` |
-| `PUT` | `/api/v1/users` | `update a user` |
+| Methods  | Urls                  | Actions                 |
+|:---------|:----------------------|:------------------------|
+| `POST`   | `/api/v1/users`       | `create new user`       |
+| `GET`    | `/api/v1/users`       | `retrieve all users`    |
+| `GET`    | `/api/v1/users/{id}`  | `retrieve a user by id` |
+| `DELETE` | `/api/v1/users/{id}`  | `delete a user by id`   |
+| `PUT`    | `/api/v1/users`       | `update a user`         |
+| `POST`   | `/api/v1/users/tasks` | `create new task`       |
+
 
 
 ## License
