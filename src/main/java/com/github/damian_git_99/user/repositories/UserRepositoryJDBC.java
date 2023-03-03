@@ -30,7 +30,7 @@ public class UserRepositoryJDBC implements UserRepository {
     public Optional<User> findUserById(Long userId) {
         String sql = "SELECT u.id, u.username, u.email, u.phone, t.id as task_id, t.name as task_name, t.description as task_description " +
                 "FROM users u " +
-                "JOIN tasks t ON u.id = t.user_id " +
+                "LEFT JOIN tasks t ON u.id = t.user_id " +
                 "WHERE u.id = ?";
 
         User user = jdbc.query(sql, new Object[]{userId}, new int[]{Types.INTEGER}, rs -> {
@@ -49,9 +49,14 @@ public class UserRepositoryJDBC implements UserRepository {
                         .id(rs.getLong("task_id"))
                         .name(rs.getString("task_name"))
                         .description(rs.getString("task_description"))
+                        .userId(rs.getLong(""))
                         .build();
 
-                u.getTasks().add(task);
+                if (task.getId() != 0L && task.getName() != null) {
+                    // avoid empty tasks
+                    u.getTasks().add(task);
+                }
+
             }
             return u;
         });

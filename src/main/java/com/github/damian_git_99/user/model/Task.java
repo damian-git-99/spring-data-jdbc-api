@@ -15,7 +15,3 @@ public class Task {
     private String description;
     private Long userId;
 }
-
-// select * from users
-// join tasks on users.id = tasks.user_id
-// where users.id = ?;
